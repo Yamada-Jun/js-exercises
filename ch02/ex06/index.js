@@ -1,0 +1,1 @@
+export function fizzbuzz() { let at_result = ""; for (let i = 1; i <= 100; i++) { if ((i % 3 == 0) && (i % 5 == 0)) at_result += `FizzBuzz\n`; else if (i % 3 == 0) at_result += `Fizz\n`; else if (i % 5 == 0) at_result += `Buzz\n`; else at_result += i.toString() + `\n`; } return at_result; }
