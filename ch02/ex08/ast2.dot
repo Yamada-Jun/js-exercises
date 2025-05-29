@@ -1,0 +1,30 @@
+digraph AST2 {
+  graph [label="AST2"];
+"0" [label="Program"]
+"1" [label="VariableDeclaration"]
+"2" [label="VariableDeclarator"]
+"3" [label="Identifier"]
+"4" [label="ExpressionStatement"]
+"5" [label="AssignmentExpression"]
+"6" [label="Identifier"]
+"7" [label="Literal:3"]
+"8" [label="ExpressionStatement"]
+"9" [label="CallExpression"]
+"10" [label="MemberExpression"]
+"11" [label="Identifier"]
+"12" [label="Identifier"]
+"13" [label="Identifier"]
+"0" -> "1"
+"1" -> "2"
+"2" -> "3"
+"0" -> "4"
+"4" -> "5"
+"5" -> "6"
+"5" -> "7"
+"0" -> "8"
+"8" -> "9"
+"9" -> "10"
+"10" -> "11"
+"10" -> "12"
+"9" -> "13"
+}

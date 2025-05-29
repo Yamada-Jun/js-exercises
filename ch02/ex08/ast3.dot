@@ -1,0 +1,12 @@
+digraph AST3 {
+  graph [label="AST3"];
+"0" [label="Program"]
+"1" [label="ExpressionStatement"]
+"2" [label="BinaryExpression"]
+"3" [label="Literal:1"]
+"4" [label="Literal:1"]
+"0" -> "1"
+"1" -> "2"
+"2" -> "3"
+"2" -> "4"
+}
