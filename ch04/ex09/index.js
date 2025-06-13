@@ -1,0 +1,6 @@
+console.log(typeof (undefined));//予想："undefined"
+console.log(typeof (null));     //予想："object"
+console.log(typeof ({}));       //予想："object"
+console.log(typeof (NaN));      //予想："number"
+console.log(typeof (1));        //予想："number"
+console.log(typeof (function func() { }));    //予想："function"
