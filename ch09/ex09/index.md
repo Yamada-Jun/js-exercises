@@ -94,7 +94,7 @@ Rectangle <|-- Square
 ```
 
 - 良い例
-
+```mermaid
 classDiagram
 class Shape {
   <<abstract>>
