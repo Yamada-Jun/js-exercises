@@ -1,4 +1,5 @@
 
+//指数関数バックオフ(問題 11.16)
 export function retryWithExponentialBackoff(func, max_retry, callback) {
     let count = 0;
     let delay = 0;
@@ -26,28 +27,38 @@ export function retryWithExponentialBackoff(func, max_retry, callback) {
 }
 
 
-
+//指数関数バックオフ(Promise版)
 export function retryWithExponentialBackoff_promise(func, max_retry) {
     let count = 0;
-
+    // func_はPromiseを返すようにする
     function func_() {
+        //受け取った関数 func を呼び出し、func が解決すればそこで終了する
         return func().then(
-            result => result,
-            err => {
+            // thenの第一引数:func()がresolveされた場合
+            // 結果をそのまま返す（func の返り値が成功した場合は retryWithExponentialBackoff の返り値をその値で解決しなさい）
+            (result) => result,
+            // thenの第二引数:func()がrejectされた場合
+            // リトライ時の仕様に従い再試行
+            (err) => {
                 if (count < max_retry) {
                     const delay = Math.pow(2, count) * 1000;
                     count++;
+                    // delay後に再度func_()を呼び出し、その結果をresolve/rejectで返すPromiseを新しく作成
                     return new Promise((resolve, reject) => {
                         setTimeout(() => {
+                            // delay秒後に再帰的にfunc_を呼び出す
                             func_().then(resolve, reject);
                         }, delay);
                     });
                 } else {
+                    //max_retry回リトライしても成功しない場合
+                    //Promise.rejectを使って、失敗状態のPromiseを即座に生成しそのまま返す
                     return Promise.reject(err);
                 }
             }
         );
     }
-
+    //最後に上で定義したfunc_の実行、およびその結果をPromiseとして返す
+    //呼び出し元はこのPromiseを受け取り、awaitなどで非同期的に処理の成功・失敗を待つことができる
     return func_();
 }
