@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <title>ex15.1-3.2 page</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+
+      <p>HELLO WORLD!</p>
+      
+      <!-- type="module" を指定しないと await import() は使えない -->
+      <script type="module">
+          // jQueryをモジュールとして動的に読み込み
+          const { $ } = await import(
+              "https://releases.jquery.com/git/jquery-git.module.min.js"
+          );
+
+          // 上記jQueryを読み込まないと $ は未定義（ReferenceError: $ is not defined）になる
+          // ページ内のすべての要素の文字色を赤に変更
+          $("*").css("color", "red");
+      </script>
+
+  </body>
+</html>
