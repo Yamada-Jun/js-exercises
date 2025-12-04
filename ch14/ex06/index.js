@@ -1,35 +1,35 @@
 
-const logs = [];//���\�b�h�Ăяo���̃��O��ۑ�����z��
+const logs = [];//メソッド呼び出しのログを保存する配列
 const handler = {
-    //get(���\�b�h�Ăяo��)�g���b�v���`
-    get(target, prop, receiver) {   //target: ���̃I�u�W�F�N�g�Aprop: �v���p�e�B���Areceiver: �v���L�V�I�u�W�F�N�g
-        const orig_prop = target[prop];    //���̃I�u�W�F�N�g�̃v���p�e�B���擾(proxy.f(1, 2)�Ȃ�f)
-        //�Ăяo�����v���p�e�B�����\�b�h�ł���΁A���b�v���ă��O��ۑ�����֐���Ԃ�
+    //get(メソッド呼び出し)トラップを定義
+    get(target, prop, receiver) {   //target: 元のオブジェクト、prop: プロパティ名、receiver: プロキシオブジェクト
+        const orig_prop = target[prop];    //元のオブジェクトのプロパティを取得(proxy.f(1, 2)ならf)
+        //呼び出したプロパティがメソッドであれば、ラップしてログを保存する関数を返す
         if (typeof orig_prop === 'function') {
-            return function (...args) {//args: ���\�b�h�̈���(proxy.f(1, 2)�Ȃ�[1, 2])
-                //apply���g���Č��̃��\�b�h���Ăяo��
+            return function (...args) {//args: メソッドの引数(proxy.f(1, 2)なら[1, 2])
+                //applyを使って元のメソッドを呼び出す
                 const result = orig_prop.apply(this, args);
-                //logs�z��Ƀ��O��ǉ�
+                //logs配列にログを追加
                 logs.push({
-                    name: prop,     //���\�b�h��
-                    args: args,     //�p�����[�^(����)
-                    timestamp: new Date(),  //�Ăяo���ꂽ����
+                    name: prop,     //メソッド名
+                    args: args,     //パラメータ(引数)
+                    timestamp: new Date(),  //呼び出された時刻
                 });
-                return result;//���̃��\�b�h�̖߂�l��Ԃ�
+                return result;//元のメソッドの戻り値を返す
             };
         } else {
-            //���\�b�h�łȂ���΁A���̂܂܌��̃v���p�e�B��Ԃ�
-            //Reflect.get���g���Č��̃I�u�W�F�N�g����v���p�e�B���擾
-            //���ꂪ�Ȃ���get���㏑������Aget�łȂ��Ȃ��Ă��܂�
+            //メソッドでなければ、そのまま元のプロパティを返す
+            //Reflect.getを使って元のオブジェクトからプロパティを取得
+            //これがないとgetが上書きされ、getでなくなってしまう
             return Reflect.get(target, prop, receiver);
         }
     },
 }
 
-export function makeProxyAndLogs(obj) { //�C�ӂ̃I�u�W�F�N�g�������Ɏ��
-    //���̃I�u�W�F�N�g�̔C�ӂ̃��\�b�h�Ăяo���ɑ΂��āA�ȉ������I�u�W�F�N�g��z��ɒǉ����ĕۑ����� Proxy ���쐬����
-    const proxy = new Proxy(obj, handler);  //Proxy�̑������ɃI�u�W�F�N�g�A�������Ƀn���h�����w��
-    //Proxy �� �z�� �o���ւ̎Q�Ƃ�ԋp����
+export function makeProxyAndLogs(obj) { //任意のオブジェクトを引数に取る
+    //そのオブジェクトの任意のメソッド呼び出しに対して、以下を持つオブジェクトを配列に追加して保存する Proxy を作成する
+    const proxy = new Proxy(obj, handler);  //Proxyの第一引数にオブジェクト、第二引数にハンドラを指定
+    //Proxy と 配列 双方への参照を返却する
     return [proxy, logs];
 }
 

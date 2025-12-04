@@ -1,25 +1,25 @@
-// div‚Æinput‚Ì—v‘f‚ðŽæ“¾
+// divã¨inputã®è¦ç´ ã‚’å–å¾—
 const div = document.getElementById('editor-front');
 const input = document.getElementById('editor-back');
 
-//addEventListener(ƒCƒxƒ“ƒgƒ^ƒCƒv, ŒÄ‚Ño‚³‚ê‚éŠÖ”)
+//addEventListener(ã‚¤ãƒ™ãƒ³ãƒˆã‚¿ã‚¤ãƒ—, å‘¼ã³å‡ºã•ã‚Œã‚‹é–¢æ•°)
 
-// div —v‘f‚ðƒNƒŠƒbƒN‚·‚é‚Æ input —v‘f‚ª focus ‚³‚ê‚é
+// div è¦ç´ ã‚’ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã¨ input è¦ç´ ãŒ focus ã•ã‚Œã‚‹
 div.addEventListener('click', () => {
     input.focus();
 });
 
-// input —v‘f‚É focus ‚³‚ê‚é‚ÆŠDF (silver)‚É‚È‚é
+// input è¦ç´ ã« focus ã•ã‚Œã‚‹ã¨ç°è‰² (silver)ã«ãªã‚‹
 input.addEventListener('focus', () => {
     div.style.backgroundColor = 'silver';
 });
 
-// input —v‘f‚©‚ç focus ‚ªŠO‚ê‚é‚Æ”’F‚É–ß‚é
+// input è¦ç´ ã‹ã‚‰ focus ãŒå¤–ã‚Œã‚‹ã¨ç™½è‰²ã«æˆ»ã‚‹
 input.addEventListener('blur', () => {
     div.style.backgroundColor = 'white';
 });
 
-// input —v‘f‚É“ü—Í‚³‚ê‚½ text ‚Í div —v‘f‚É‚à•\Ž¦‚³‚ê‚é
+// input è¦ç´ ã«å…¥åŠ›ã•ã‚ŒãŸ text ã¯ div è¦ç´ ã«ã‚‚è¡¨ç¤ºã•ã‚Œã‚‹
 input.addEventListener('input', () => {
     div.textContent = input.value;
 });

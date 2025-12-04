@@ -1,54 +1,54 @@
-//nav —v‘f“à‚ÌƒŠƒ“ƒN (<a>)
-const links = document.querySelectorAll("nav a");//"nav" —v‘f‚Ì‚¤‚¿Aa —v‘f
+//nav è¦ç´ å†…ã®ãƒªãƒ³ã‚¯ (<a>)
+const links = document.querySelectorAll("nav a");//"nav" è¦ç´ ã®ã†ã¡ã€a è¦ç´ 
 console.log(links);
 for (let i = 0; i < links.length; i++) {
     console.log(links[i]);
 }
 
-//¤•iƒŠƒXƒg (.product-list) “à‚ÌÅ‰‚Ì¤•i (.product-item)
-const product_item = document.querySelector(".product-list .product-item:first-child");//.product-list ‚Ì‚¤‚¿Aproduct-item ƒNƒ‰ƒX‚ğ‚Â—v‘f‚ÅA‚©‚Â‚»‚Ìe‚Ì’†‚ÅÅ‰‚Ìq
+//å•†å“ãƒªã‚¹ãƒˆ (.product-list) å†…ã®æœ€åˆã®å•†å“ (.product-item)
+const product_item = document.querySelector(".product-list .product-item:first-child");//.product-list ã®ã†ã¡ã€product-item ã‚¯ãƒ©ã‚¹ã‚’æŒã¤è¦ç´ ã§ã€ã‹ã¤ãã®è¦ªã®ä¸­ã§æœ€åˆã®å­
 console.log(product_item);
 
-//ƒJ[ƒgƒAƒCƒRƒ“‚Ì‰æ‘œ (<img>)
-const icon = document.querySelector(".cart img");//.cart ƒNƒ‰ƒX‚ğ‚Â—v‘f‚Ì‚¤‚¿Aimg —v‘f
+//ã‚«ãƒ¼ãƒˆã‚¢ã‚¤ã‚³ãƒ³ã®ç”»åƒ (<img>)
+const icon = document.querySelector(".cart img");//.cart ã‚¯ãƒ©ã‚¹ã‚’æŒã¤è¦ç´ ã®ã†ã¡ã€img è¦ç´ 
 console.log(icon);
 
-//¤•iƒŠƒXƒg (.product-list) “à‚Ì‰¿Ši (.price) ‚ğ•\¦‚·‚é—v‘f
-const price_elements = document.querySelectorAll(".product-list .price");//.product-list ‚Ì‚¤‚¿Aprice ƒNƒ‰ƒX‚ğ‚Â—v‘f
+//å•†å“ãƒªã‚¹ãƒˆ (.product-list) å†…ã®ä¾¡æ ¼ (.price) ã‚’è¡¨ç¤ºã™ã‚‹è¦ç´ 
+const price_elements = document.querySelectorAll(".product-list .price");//.product-list ã®ã†ã¡ã€price ã‚¯ãƒ©ã‚¹ã‚’æŒã¤è¦ç´ 
 console.log(price_elements);
 for (let i = 0; i < price_elements.length; i++) {
     console.log(price_elements[i]);
 }
 
-//¤•iƒŠƒXƒg (.product-list) “à‚Ì‘S‚Ä‚Ì¤•i (.product-item) ‚Ì‰æ‘œ (<img>)
-const product_images = document.querySelectorAll(".product-list .product-item img");//.product-list ‚Ì‚¤‚¿Aproduct-item ƒNƒ‰ƒX‚ğ‚Â—v‘f‚Ì‚³‚ç‚Éq‘·—v‘f‚Å‚ ‚é img —v‘f
+//å•†å“ãƒªã‚¹ãƒˆ (.product-list) å†…ã®å…¨ã¦ã®å•†å“ (.product-item) ã®ç”»åƒ (<img>)
+const product_images = document.querySelectorAll(".product-list .product-item img");//.product-list ã®ã†ã¡ã€product-item ã‚¯ãƒ©ã‚¹ã‚’æŒã¤è¦ç´ ã®ã•ã‚‰ã«å­å­«è¦ç´ ã§ã‚ã‚‹ img è¦ç´ 
 console.log(product_images);
 for (let i = 0; i < product_images.length; i++) {
     console.log(product_images[i]);
 }
 
-//ŒŸõƒo[ (.search-bar) “à‚ÌŒŸõƒ{ƒ^ƒ“ (<button>)
-const button = document.querySelector(".search-bar button");//.search-bar ƒNƒ‰ƒX‚ğ‚Â—v‘f‚Ì‚¤‚¿Abutton —v‘f
+//æ¤œç´¢ãƒãƒ¼ (.search-bar) å†…ã®æ¤œç´¢ãƒœã‚¿ãƒ³ (<button>)
+const button = document.querySelector(".search-bar button");//.search-bar ã‚¯ãƒ©ã‚¹ã‚’æŒã¤è¦ç´ ã®ã†ã¡ã€button è¦ç´ 
 console.log(button);
 
-//ƒtƒbƒ^[ (footer) “à‚Ìƒpƒ‰ƒOƒ‰ƒt (<p>) —v‘f
-const paragraphs = document.querySelectorAll("footer p");//footer —v‘f‚Ì‚¤‚¿Ap —v‘f
+//ãƒ•ãƒƒã‚¿ãƒ¼ (footer) å†…ã®ãƒ‘ãƒ©ã‚°ãƒ©ãƒ• (<p>) è¦ç´ 
+const paragraphs = document.querySelectorAll("footer p");//footer è¦ç´ ã®ã†ã¡ã€p è¦ç´ 
 console.log(paragraphs);
 for (let i = 0; i < paragraphs.length; i++) {
     console.log(paragraphs[i]);
 }
 
-//¤•iƒŠƒXƒg (.product-list) “à‚Ì‹ô””Ô–Ú‚Ì¤•i (.product-item)
-const product_item_even = document.querySelectorAll(".product-list .product-item:nth-child(even)");//.product-list ‚Ì‚¤‚¿Aproduct-item ƒNƒ‰ƒX‚ğ‚Â—v‘f‚ÅA‚©‚Â‚»‚Ìe‚Ì’†‚Å‹ô””Ô–Ú‚Ìq
+//å•†å“ãƒªã‚¹ãƒˆ (.product-list) å†…ã®å¶æ•°ç•ªç›®ã®å•†å“ (.product-item)
+const product_item_even = document.querySelectorAll(".product-list .product-item:nth-child(even)");//.product-list ã®ã†ã¡ã€product-item ã‚¯ãƒ©ã‚¹ã‚’æŒã¤è¦ç´ ã§ã€ã‹ã¤ãã®è¦ªã®ä¸­ã§å¶æ•°ç•ªç›®ã®å­
 console.log(product_item_even);
 for (let i = 0; i < product_item_even.length; i++) {
     console.log(product_item_even[i]);
 }
 
-//ƒwƒbƒ_[ (header) “à‚ÌƒAƒJƒEƒ“ƒgƒŠƒ“ƒN (.account) ‚Ì‰æ‘œ (<img>)
-const account_image = document.querySelector("header .account img");//.account ƒNƒ‰ƒX‚ğ‚Â—v‘f‚Ì‚¤‚¿Aimg —v‘f
+//ãƒ˜ãƒƒãƒ€ãƒ¼ (header) å†…ã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆãƒªãƒ³ã‚¯ (.account) ã®ç”»åƒ (<img>)
+const account_image = document.querySelector("header .account img");//.account ã‚¯ãƒ©ã‚¹ã‚’æŒã¤è¦ç´ ã®ã†ã¡ã€img è¦ç´ 
 console.log(account_image);
 
-//ƒiƒrƒQ[ƒVƒ‡ƒ“ƒŠƒ“ƒN‚Ì‚¤‚¿A"‰ïĞî•ñ" ‚ÌƒŠƒ“ƒN
-const company_info_link = document.querySelector("nav a[href='#about']");//"nav" —v‘f‚Ì‚¤‚¿Ahref ‘®«‚ª '#about' ‚Ì a —v‘f
+//ãƒŠãƒ“ã‚²ãƒ¼ã‚·ãƒ§ãƒ³ãƒªãƒ³ã‚¯ã®ã†ã¡ã€"ä¼šç¤¾æƒ…å ±" ã®ãƒªãƒ³ã‚¯
+const company_info_link = document.querySelector("nav a[href='#about']");//"nav" è¦ç´ ã®ã†ã¡ã€href å±æ€§ãŒ '#about' ã® a è¦ç´ 
 console.log(company_info_link);
