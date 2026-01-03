@@ -70,6 +70,24 @@
     link.href = `#${fragmentName}`;
     link.innerHTML = heading.innerHTML;
 
+    /* 追加分 */
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const target = document.querySelector(`a[name="${fragmentName}"]`);/* 対象の要素を取得 */
+      if (!target) {
+        return;
+      }
+      /* console.log(target); */
+
+     /* NOTE: scrollTo または scrollIntoView でスムーズにスクロールしなさい  */
+     /* windowはブラウザの表示領域全体を指す */
+     window.scrollTo({
+         top: target.offsetTop,/*  要素の位置までスクロールする */
+         left: 0,
+         behavior: "smooth"     /*  スムーズにスクロールする */
+     });
+    });
+
     let entry = document.createElement("div");
     entry.classList.add("TOCEntry", `TOCLevel${level}`);
     entry.append(link);

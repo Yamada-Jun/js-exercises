@@ -18,8 +18,17 @@ form.addEventListener("submit", (e) => {
   const destroy = clone.querySelector("button");
 
   toggle.addEventListener("change", () => {
-    // IMPORTANT: ChatGPT にはこの関数内のコードのみ変更してもらうこと
-    li.classList.toggle("completed", toggle.checked);
+    // エヴァ風: 完了時に紫・赤・警告色・太字・装飾
+    li.classList.toggle("bg-gradient-to-r", toggle.checked);
+    li.classList.toggle("from-purple-900", toggle.checked);
+    li.classList.toggle("to-red-700", toggle.checked);
+    li.classList.toggle("border-orange-400", toggle.checked);
+    li.classList.toggle("shadow-orange-400/60", toggle.checked);
+    li.classList.toggle("opacity-90", toggle.checked);
+    label.classList.toggle("line-through", toggle.checked);
+    label.classList.toggle("text-orange-400", toggle.checked);
+    label.classList.toggle("drop-shadow-[0_0_16px_orange]", toggle.checked);
+    label.classList.toggle("font-black", toggle.checked);
   });
   label.textContent = todo;
   destroy.addEventListener("click", () => {

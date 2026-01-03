@@ -1,3 +1,166 @@
-.completed {
+/* エヴァンゲリオン風デザイン */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+/* 基本スタイル */
+body {
+    background: linear-gradient(135deg, #2d0036 0%, #0a0a23 100%); /* ダークなグラデーション背景 */
+    color: #39ff14;                                  /* テキストの色、エヴァの特徴的な緑色 */
+    font-family: 'Orbitron', 'Meiryo', 'sans-serif'; /* 英語と日本語の両方に対応するため、欧文フォントを先に指定し、その後に日本語フォントを指定 */
+    margin: 0;                                       /* ページの余白なし */
+    min-height: 100vh;                               /* ビューポート全体の高さ、100vhはビューポートに対して100% */
+    letter-spacing: 1px;                             /* 文字間隔を1px広げる */
+}
+
+/* h1とtitleがないので、使用されない */
+h1, .title {
+  color: #ff2a68;
+  text-shadow: 0 0 10px #ff2a68, 0 0 20px #fff;
+  text-align: center;
+  margin-top: 32px;
+  font-size: 2.2rem;
+  font-family: 'Orbitron', 'Meiryo', 'sans-serif';
+}
+
+/* フォームのスタイル */
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0 24px 0;
+  gap: 12px;
+}
+
+/* 新規タスク入力欄とボタンのスタイル */
+#new-todo {
+    background: #0a0a23; /* ダークなグラデーション背景 */
+    color: #39ff14; /* テキストの色？、使用されていないかもしれない */
+    border: 2px solid #ff2a68; /* ピンクの境界線 */
+    border-radius: 8px; /* 角を丸くする */
+    padding: 10px 16px; /* 内側の余白 */
+    font-size: 1.1rem; /* フォントサイズ(html上の基本フォントサイズの1.1倍のサイズ) */
+    outline: none; /* フォーカス時にアウトラインを消すことで緑色になるようにする */
+    transition: border 0.2s; /* 境界線の変化にアニメーションを追加 */
+    font-family: 'Orbitron', 'Meiryo', 'sans-serif'; /* 英語と日本語の両方に対応するため、欧文フォントを先に指定し、その後に日本語フォントを指定 */
+}
+
+/* 新規タスク入力欄へのフォーカス時の緑色に光るエフェクト */
+#new-todo:focus {
+  border-color: #39ff14;
+  box-shadow: 0 0 8px #39ff14;
+}
+
+/* 追加ボタンのスタイル */
+button {
+    background: #ff2a68; /* ボタンのピンクの背景色 */
+    color: #fff; /* ボタンのテキスト色 */
+    border: none; /* ボタンの境界線を消す */
+    border-radius: 8px; /* 角を丸くする */
+    padding: 10px 24px; /* 内側の余白 */
+    font-size: 1.1rem; /* フォントサイズ */
+    font-family: 'Orbitron', 'Meiryo', 'sans-serif';
+    cursor: pointer; /* ボタンの上にカーソルを置くとポインター(手のアイコン)に変更 */
+    box-shadow: 0 0 8px #ff2a68; /* ボタンにピンクの影を追加　 [水平オフセット] [垂直オフセット] [ぼかし半径] [広がり（省略可）] [色] */
+    transition: background 0.2s, box-shadow 0.2s; /* 背景色と影の変化にアニメーションを追加 0.2秒かけて変化する */
+}
+
+/* 追加ボタンへのホバー時の緑色に光るエフェクト */
+button:hover {
+  background: #39ff14;
+  color: #0a0a23;
+  box-shadow: 0 0 16px #39ff14;
+}
+
+/* ToDoリストのスタイル */
+#todo-list {
+    max-width: 480px;
+    margin: 0 auto; /* 上下のマージンが 0、左右のマージンが auto(中央) */
+    padding: 0;
+    list-style: none; /* リストのデフォルトのスタイル「・」を消す */
+}
+
+/* 各タスク項目のスタイル */
+li {
+  background: rgba(10, 10, 35, 0.85);
+  border: 2px solid #ff2a68;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  padding: 0;
+  box-shadow: 0 0 10px #ff2a6844;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+/* 完了したタスクのスタイル */
+    li.completed {
+        border-color: #39ff14; /* 完了したら緑色の境界線に変更 */
+        background: rgba(57, 255, 20, 0.08); /* 完了したら背景色を変更(あまり変化なし) */
+        text-decoration: none; /* テキストの取り消し線を消す指定だが、実際には取り消し線は表示されている、なぜ？ */
+    }
+
+/* タスクの表示部分のスタイル */
+    li .view {
+        display: flex; /* フレックスボックスを使用 */
+        align-items: center; /* アイテムを垂直方向に中央揃え */
+        padding: 14px 18px; /* 内側の余白 */
+        gap: 16px; /* チェックボックスとテキスト間のスペース */
+    }
+
+    /* チェックボックスとタスク内容のスタイル */
+.toggle[type="checkbox"] { /* チェックボックスのスタイル */
+    accent-color: #ff2a68;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+/* 完了したタスクのチェックボックスのスタイル */
+li.completed .toggle[type="checkbox"] {
+  accent-color: #39ff14;
+}
+
+/* タスク内容のスタイル */
+label.content {
+  flex: 1;
+  font-size: 1.1rem;
+  color: #fff;
+  text-shadow: 0 0 4px #39ff14;
+  transition: color 0.2s;
+}
+
+/* 完了したタスク内容のスタイル */
+li.completed label.content {
+  color: #39ff14;
   text-decoration: line-through;
+  text-shadow: 0 0 8px #39ff14;
+}
+
+/* 削除ボタンのスタイル */
+button.destroy {
+    background: transparent; /* 背景を透明にする */
+    color: #ff2a68;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 50%; /* 四角いボタンを円形にする */
+    transition: background 0.2s, color 0.2s; /* 背景色とテキスト色の変化にアニメーションを追加 0.2秒かけて変化する */
+    box-shadow: none; /* 初期状態では影をなしにする。これがないと光っていないのに影ができてしまう */
+}
+
+/* 削除ボタンへのホバー時の赤く光るエフェクト */
+button.destroy:hover {
+  background: #ff2a68;
+  color: #fff;
+  box-shadow: 0 0 8px #ff2a68;
+}
+
+/* 画面幅が600px以下の場合のスタイル */
+@media (max-width: 600px) {
+    #todo-list {
+        max-width: 98vw; /* 画面幅の98%に設定 */
+    }
+    form {
+        flex-direction: column; /* フォーム要素を縦に並べる */
+        gap: 8px;
+    }
 }

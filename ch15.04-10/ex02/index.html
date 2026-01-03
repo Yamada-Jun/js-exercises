@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="/ch15.04-10/ex02/style.css" />
   </head>
   <!-- IMPORTANT: ChatGPT にはここから下の内容しか変更させないこと -->
-  <body>
-    <form id="new-todo-form">
-      <input type="text" id="new-todo" placeholder="What needs to be done?" />
-      <button>Add</button>
+  <body class="min-h-screen flex flex-col items-center py-16 bg-gradient-to-br from-black via-purple-900 to-gray-900">
+    <form id="new-todo-form" class="flex gap-4 mb-12 w-full max-w-2xl bg-black/80 border-4 border-green-500 rounded-xl shadow-2xl p-8 items-center">
+      <input type="text" id="new-todo" placeholder="What needs to be done?" class="flex-1 px-8 py-4 text-2xl rounded-lg border-2 border-purple-700 focus:outline-none focus:ring-4 focus:ring-green-400 bg-gray-900 text-green-300 placeholder-green-400 font-bold tracking-widest shadow-inner" />
+      <button class="px-10 py-4 bg-gradient-to-r from-purple-700 via-black to-green-500 text-orange-400 text-2xl font-extrabold rounded-lg shadow-xl border-2 border-orange-400 hover:bg-orange-600 hover:text-white transition-all">発令</button>
     </form>
-    <ul id="todo-list">
+    <ul id="todo-list" class="w-full max-w-2xl space-y-6">
       <!-- NOTE: 以下のような要素を JavaScript で動的に追加する
       <li class="completed">
         <div class="view">
@@ -35,11 +35,11 @@
     </ul>
 
     <template id="todo-template">
-      <li>
-        <div class="view">
-          <input class="toggle" type="checkbox" />
-          <label class="content"></label>
-          <button class="destroy">❌</button>
+      <li class="rounded-xl shadow-2xl flex items-center px-10 py-6 border-4 border-purple-700 bg-black/80 transition-all group hover:scale-[1.03] hover:shadow-orange-400/40">
+        <div class="view flex items-center w-full">
+          <input class="toggle mr-6 w-8 h-8 accent-green-500 focus:ring-green-400 border-green-400/80 rounded shadow-lg" type="checkbox" />
+          <label class="content flex-1 text-green-300 text-2xl font-extrabold tracking-widest drop-shadow-[0_0_8px_green] transition-all"></label>
+          <button class="destroy ml-6 text-orange-400 hover:text-red-600 text-4xl px-5 py-2 rounded-full transition-all border-2 border-orange-400 bg-black/60 shadow-lg hover:scale-125 hover:bg-orange-600/20" title="削除">警告</button>
         </div>
       </li>
     </template>

@@ -4,7 +4,7 @@ const input = document.querySelector("#new-todo");
 const template = document.querySelector("#todo-template");
 
 // { content: "...", completed: true or false } の配列
-const todos = [];
+let todos = [];
 
 function renderTodos(todos) {
   list.innerHTML = "";
@@ -46,6 +46,19 @@ form.addEventListener("submit", (e) => {
 
 window.addEventListener("hashchange", () => {
   // ここを実装してね
+  //console.log('current hash:', location.hash);
+  const active_todos = todos.filter((todo) => todo.completed === false);
+  const completed_todos = todos.filter((todo) => todo.completed === true);
+  // hashごとに表示を切り替える
+  if (location.hash === "#/active") {
+      //renderTodosにtodoを渡すと表示される
+      renderTodos(active_todos);
+  } else if (location.hash === "#/completed") {
+      renderTodos(completed_todos);
+  } else {
+      renderTodos(todos);
+  }
+
 });
 
 function deleteTodo(content) {
