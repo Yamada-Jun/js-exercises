@@ -12,11 +12,11 @@ async function listTasksHandler(_url, _req, res) {
     Connection: "keep-alive",
     "Content-Type": "text/event-stream",
     "Cache-Control": "no-cache",
-    "Access-Control-Allow-Origin": "http://localhost:3000",
+      "Access-Control-Allow-Origin": "http://localhost:52149",//起動したサーバーのポート番号に合わせる
   });
 
   setTimeout(() => {
-    res.write('data: {"value": "こんにちわ\\n", "done": false}');
+    res.write('data: {"value": "こんにちは\\n", "done": false}');
     res.write("\n\n");
   }, 2000);
 

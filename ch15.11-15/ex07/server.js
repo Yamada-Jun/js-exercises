@@ -43,8 +43,11 @@ async function serveContentsHandler(url, _req, res) {
 
 // CSP のヘッダを返すミドルウェア
 function cspMiddleware(_url, req, res) {
-  // TODO: CSP ヘッダを設定する
-  // res.setHeader("Content-Security-Policy", "TODO");
+    // TODO: CSP ヘッダを設定する
+    //"script-src http://localhost:3000/hello.jsで特定のjsファイルだけを許可する,'self'を入れると同一オリジンのすべてのjsを許可してしまう
+    //'nonce-ricoh1234'でインラインスクリプトの許可、<script nonce="ricoh1234"></script>となっているスクリプトが許可される
+    //setHeader は同じヘッダー名で複数回呼ぶと上書きされるのでまとめて設定
+    res.setHeader("Content-Security-Policy", "script-src http://localhost:3000/hello.js 'nonce-ricoh1234'");
   return true;
 }
 
