@@ -23,11 +23,42 @@ async function startChild() {
     console.error(`stderr: ${data}`);
   });
 
+  // 子プロセスが異常終了した場合、再起動
+  child.on("close", async (code, signal) => {
+    if (code !== 0) {
+      console.log(`子プロセスが終了しました (code: ${code}, signal: ${signal})`);
+      await startChild();
+    }
+  });
+
   return new Promise((res) => {
     child.on("close", (code, signal) => {
-      res([code, signal]);
+      res([code, signal]); // Promiseを解決して、子プロセスの終了コードとシグナルを返す
     });
   });
 }
 
 // TODO: ここに処理を書く
+(async () => {
+    child = await startChild();//startChild()はPromiseを返す
+    const [code, signal] = await child;
+    if (signal === "SIGTERM" || signal === "SIGKILL") {
+        process.exit(0);
+    }
+})();
+
+//SIGTERMシグナルをトラップ
+process.on("SIGTERM", () => {
+    // 子プロセスが存在すればSIGTERMを送信
+    if (child) {
+        child.kill("SIGTERM");
+    }
+});
+
+//SIGKILLシグナルをトラップ
+process.on("SIGKILL", () => {
+    // 子プロセスが存在すればSIGKILLを送信
+    if (child) {
+        child.kill("SIGKILL");
+    }
+});

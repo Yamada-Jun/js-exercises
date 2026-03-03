@@ -13,7 +13,7 @@ console.time("Total execution time");
 
 // 動的にタスクをワーカーに割り当てる
 const assignTask = (worker) => {
-  if (currentTask < fibNumber) {
+  if (currentTask < fibNumber) {    // 45を指定したとき、0～44のフィボナッチ数をマルチスレッドで計算する
     worker.postMessage(currentTask); // タスクを割り当て
     currentTask++;
   } else {
