@@ -1,0 +1,50 @@
+//JS-Beautify‚Å®Œ`
+(() => {
+    "use strict";
+    const e = document.querySelector("#screen").getContext("2d");
+
+    function t(t, n, l, o) {
+        for (let c = 0; c < n; c++)
+            for (let n = 0; n < l; n++) {
+                const l = t[c][n];
+                e.beginPath(), e.rect(n * o, c * o, o, o), e.fillStyle = l ? "black" : "white", e.fill(), e.stroke()
+            }
+    }
+    const n = document.querySelector("#screen"),
+        l = document.querySelector("#start"),
+        o = document.querySelector("#pause");
+    n.width = 500, n.height = 500;
+    let c = null;
+    const r = new Audio("/ch17/ex05/decision1.mp3");
+    let i = new Array(50).fill(null).map(() => new Array(50).fill(null).map(() => !!Math.floor(2 * Math.random())));
+    n.addEventListener("click", function (e) {
+        const l = n.getBoundingClientRect(),
+            o = e.clientX - l.left,
+            c = e.clientY - l.top,
+            a = Math.floor(c / 10),
+            u = Math.floor(o / 10);
+        i[a][u] = !i[a][u], r.cloneNode().play(), t(i, 50, 50, 10)
+    });
+    let a = Date.now();
+
+    function u() {
+        const e = Date.now();
+        e - a >= 100 && (i = function (e) {
+            const t = e.map(e => [...e]);
+            let n, l, o = 0;
+            for (let c = 0; c < 50; c++)
+                for (let r = 0; r < 50; r++) {
+                    o = 0;
+                    for (let t = -1; t <= 1; t++)
+                        for (let i = -1; i <= 1; i++) n = c + t, l = r + i, n >= 0 && n < 50 && l >= 0 && n < 50 && (!e[n][l] || 0 == t && 0 == i || o++);
+                    t[c][r] = !1, e[c][r] ? 2 != o && 3 != o || (t[c][r] = !0) : 3 == o && (t[c][r] = !0)
+                }
+            return t
+        }(i), t(i, 50, 50, 10), a = e), c = requestAnimationFrame(u)
+    }
+    l.addEventListener("click", () => {
+        c || u()
+    }), o.addEventListener("click", () => {
+        c && (cancelAnimationFrame(c), c = null)
+    }), t(i, 50, 50, 10)
+})();
