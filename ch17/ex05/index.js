@@ -1,5 +1,5 @@
-import { updateGrid } from "updateGrid.js";
-import { renderGrid } from "renderGrid.js";
+import { updateGrid } from "./updateGrid.js";
+import { renderGrid } from "./renderGrid.js";
 
 // 50 x 50 の盤面とする
 const ROWS = 50;
@@ -18,7 +18,7 @@ canvas.height = COLS * RESOLUTION;
 let animationId = null;
 
 // NOTE: download from https://soundeffect-lab.info/sound/button/mp3/decision1.mp3
-const sound = new Audio("/ch15.04-10/ex10/decision1.mp3");
+const sound = new Audio("/ch17/ex05/decision1.mp3");
 
 // ライフゲームのセル (true or false) をランダムに初期化する
 let grid = new Array(ROWS)
@@ -48,7 +48,7 @@ function update() {
     // 100msごと（10fps）に更新
     if (now_timestamp - last_timestamp >= 100) {
         grid = updateGrid(grid, ROWS, COLS);
-        renderGrid(grid);
+        renderGrid(grid, ROWS, COLS, RESOLUTION);
         last_timestamp = now_timestamp;
     }
     animationId = requestAnimationFrame(update);
@@ -71,4 +71,4 @@ pauseButton.addEventListener("click", () => {
     animationId = null;
 });
 
-renderGrid(grid);
+renderGrid(grid, ROWS, COLS, RESOLUTION);
