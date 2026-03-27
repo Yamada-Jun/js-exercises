@@ -11,7 +11,12 @@
     "build": "webpack"
   },
   "devDependencies": {
+    "flow-bin": "^0.307.0",
+    "flow-remove-types": "^2.307.0",
     "webpack": "^5.105.4",
     "webpack-cli": "^7.0.2"
+  },
+  "dependencies": {
+    "typescript": "^6.0.2"
   }
 }
