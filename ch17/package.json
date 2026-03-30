@@ -7,7 +7,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules ../node_modules/jest/bin/jest.js --runInBand",
     "build": "webpack",
     "lint": "eslint ./ex01",
     "format": "prettier --write ./ex01"
