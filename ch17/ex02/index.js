@@ -60,10 +60,10 @@ export async function listIssues() {
     });
     const issues = await resList.json();
     issues.forEach(issue => {
-        console.log(`#${issue.number}: ${issue.title}`);
+        // console.log(`#${issue.number}: ${issue.title}`);
     });
     log += `Request: GET https://api.github.com/repos/Yamada-Jun/js-exercises/issues?state=open\n`;
-    log += `Response: ${await resList.text()}\n`;
+    log += `Response: ${JSON.stringify(issues)}\n`;
 }
 
 // コマンドを実行する関数
