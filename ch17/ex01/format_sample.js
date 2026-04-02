@@ -5,12 +5,16 @@ function sample() {
   const spaces = 'illegal spaces';
   let disallowedObj = {
     width: 42, // struct-style unquoted key
-    maxWidth: 43 // dict-style quoted key
+    maxWidth: 43, // dict-style quoted key
   };
 
   // React公式のサンプルを参考に設定
   let jsx = (
-    <button className="prettier-class" id="prettier-id" onClick={this.handleClick}>
+    <button
+      className='prettier-class'
+      id='prettier-id'
+      onClick={this.handleClick}
+    >
       Click Here
     </button>
   );
@@ -74,7 +78,7 @@ someMethod(foo, [0, 1, 2], bar);
 // Object literals: optionally block-like (allowed example)
 const a = {
   a: 0,
-  b: 1
+  b: 1,
 };
 
 const b = { a: 0, b: 1 };
@@ -84,7 +88,7 @@ someMethod(
   foo,
   {
     a: 0,
-    b: 1
+    b: 1,
   },
   bar
 );
